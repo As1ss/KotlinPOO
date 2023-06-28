@@ -29,7 +29,7 @@ open class Pokemon(
         this.life = 100f
     }
 
-    fun attack() {
+    open fun attack() {
         println("${this.name} ha atacado!")
     }
 
@@ -80,6 +80,11 @@ class WaterPokemon(
         this.sayHi()
     }
 
+
+    override fun attack() {
+        super.attack()
+        println("${this.name} ha atacado con Pistola de Agua!")
+    }
     fun breathe() {
         this.submergedTime = 0
     }
@@ -102,6 +107,28 @@ class WaterPokemon(
 
     fun setSubmergedTime(cantidad: Int) {
         this.submergedTime = cantidad
+    }
+
+}
+
+class FirePokemon(
+    name: String = "Pokemone",
+    attackPower: Float = 30f,
+    private var ballTemperature: Int = 90
+) :
+    Pokemon(name, attackPower) {
+
+        fun FirePokemon(n:String,aP:Float,bT:Int){
+            this.name=n
+            this.attackPower=aP
+            this.life=100f
+            this.ballTemperature=bT
+            this.sayHi()
+        }
+
+    override fun attack() {
+        super.attack()
+        println("${this.name} ha atacado con Ascuas!")
     }
 
 }

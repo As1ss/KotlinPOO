@@ -63,10 +63,11 @@ class MainActivity : AppCompatActivity() {
         pokemon.setLife(120f)
         println("Puntos de vida: ${pokemon.getLife()}")
 
+        println("OBJETOS TIPO AGUA-------------------------------")
         var pokemonAqua: WaterPokemon = WaterPokemon()
         pokemonAqua.setName("Squirtle")
         println("Nombre del Pokemon: ${pokemonAqua.getName()}")
-        pokemonAqua.setAttackPower(50f)
+        pokemonAqua.setAttackPower(30f)
         println("Poder de ataque: ${pokemonAqua.getAttackPower()}")
         pokemonAqua.setLife(55f)
         println("Puntos de vida: ${pokemonAqua.getLife()}")
@@ -89,5 +90,39 @@ class MainActivity : AppCompatActivity() {
         println("Puntos de vida: ${pokemonAqua.getLife()}")
         pokemonAqua.attack()
 
+
+        println("OBJETOS TIPO FUEGO-------------------------------")
+        var pokemonFire: FirePokemon = FirePokemon("Charmander", 30f)
+        pokemonFire.attack()
+
+        println("COMBATE DE POKEMONES-------------------------------")
+        fight(pokemonFire, pokemonAqua)
+    }
+
+    private fun fight(p1: Pokemon, p2: Pokemon) {
+
+        var text = ""
+
+        text += "\n ${p1.getName()} ${p1.getLife()} VS ${p2.getName()} ${p2.getLife()}"
+
+
+        while (p1.getLife() > 0 && p2.getLife() > 0) {
+            text += "\n ${p1.getName()} ataca!"
+            p1.attack()
+            p2.setLife(p2.getLife() - p1.getAttackPower())
+            text += "\n ${p1.getName()} ${p1.getLife()} VS ${p2.getName()} ${p2.getLife()}"
+            if (p2.getLife() > 0) {
+                text += "\n ${p2.getName()} ataca!"
+                p2.attack()
+                p1.setLife(p1.getLife() - p2.getAttackPower())
+                text += "\n ${p1.getName()} ${p1.getLife()} VS ${p2.getName()} ${p2.getLife()}"
+            }
+        }
+        if (p1.getLife() > 0) {
+            text += "\n\nEL CAMPEON ES ${p1.getName()}"
+        } else {
+            text += "\n\nEL CAMPEON ES ${p2.getName()}"
+        }
+        println(text)
     }
 }
