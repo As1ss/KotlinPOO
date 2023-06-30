@@ -117,8 +117,11 @@ class FirePokemon(
     name: String = "Pokemone",
     attackPower: Float = 30f,
     private var ballTemperature: Int = 90
+
 ) :
     Pokemon(name, attackPower) {
+    lateinit var ball: FireBall
+    private var numBalls:Int=0
 
     fun FirePokemon(n: String, aP: Float, bT: Int) {
         this.name = n
@@ -130,9 +133,20 @@ class FirePokemon(
 
     override fun attack() {
         super.attack()
-        println("${this.name} ha atacado con Ascuas!")
+        println("${this.name} ha atacado con fuego!")
+        numBalls++
+        println("${this.name} ha lanzado $numBalls bolas de fuego!")
+        ball = FireBall(ballTemperature)
+        ball.throwBall()
+
     }
 
+}
+
+class FireBall(var temperature: Int = 100) {
+    fun throwBall() {
+        println("Tirando bola de fuego con temperatura de $temperature")
+    }
 }
 
 class EarthPokemon(name: String, attackPower: Float, var depth: Int = 500) :

@@ -91,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         pokemonAqua.attack()
 
         println("OBJETOS TIPO TIERRA-----------------")
-        var pokemonTierra:EarthPokemon= EarthPokemon("Dugtrio",25f)
+        var pokemonTierra: EarthPokemon = EarthPokemon("Dugtrio", 25f)
         pokemonTierra.depth
         pokemonTierra.attack()
         pokemonTierra.sayByeEarthPokemon()
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         pokemonFire.attack()
 
         println("COMBATE DE POKEMONES-------------------------------")
-        fight(pokemonFire, pokemonAqua)
+        fight(pokemonFire, pokemonTierra)
     }
 
     private fun fight(p1: Pokemon, p2: Pokemon) {
@@ -129,5 +129,18 @@ class MainActivity : AppCompatActivity() {
             text += "\n\nEL CAMPEON ES ${p2.getName()}"
         }
         println(text)
+
+
+        //Clases Padre, y clases anidadas/internas (las clases hijas no heredan del padre)
+
+        var subClasesTest: SubClasses = SubClasses()
+        println(subClasesTest.presentacion())
+        var anidadasTest: SubClasses.Anidada = SubClasses.Anidada()
+        println(anidadasTest.presentacion())
+        var internaTest:SubClasses.Interna= SubClasses().Interna()
+        println(internaTest.presentacion())
+
     }
+
+
 }
