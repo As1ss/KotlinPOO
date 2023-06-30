@@ -4,7 +4,7 @@ open class Pokemon(
     protected var name: String = "Pokemone",
     protected var attackPower: Float = 30f,
     protected var life: Float = 100f
-) {
+) : thanks() {
 
 
     //Esta función es como un constructor falso
@@ -27,6 +27,7 @@ open class Pokemon(
 
     fun cure() {
         this.life = 100f
+        this.thanksCure()
     }
 
     open fun attack() {
@@ -85,6 +86,7 @@ class WaterPokemon(
         super.attack()
         println("${this.name} ha atacado con Pistola de Agua!")
     }
+
     fun breathe() {
         this.submergedTime = 0
     }
@@ -118,17 +120,71 @@ class FirePokemon(
 ) :
     Pokemon(name, attackPower) {
 
-        fun FirePokemon(n:String,aP:Float,bT:Int){
-            this.name=n
-            this.attackPower=aP
-            this.life=100f
-            this.ballTemperature=bT
-            this.sayHi()
-        }
+    fun FirePokemon(n: String, aP: Float, bT: Int) {
+        this.name = n
+        this.attackPower = aP
+        this.life = 100f
+        this.ballTemperature = bT
+        this.sayHi()
+    }
 
     override fun attack() {
         super.attack()
         println("${this.name} ha atacado con Ascuas!")
     }
 
+}
+
+class EarthPokemon(name: String, attackPower: Float, var depth: Int = 500) :
+    Pokemon(name, attackPower), SayBye, SayBye2, SayBye3 {
+
+    fun EarthPokemon(n: String, aP: Float, d: Int) {
+        this.name = n
+        this.attackPower = aP
+        this.depth = d
+        this.life = 100f
+        this.sayHi()
+    }
+
+    override fun attack() {
+        super.attack()
+        println("Ataque con pedrolos!")
+    }
+
+    fun digTunnel() {
+        println("Cavaré un tunel de ${this.depth}m de profundidad")
+    }
+
+    fun sayByeEarthPokemon() {
+        this.sayBye()
+        this.sayBye2()
+        this.sayBye3()
+    }
+
+
+}
+
+abstract class thanks() {
+
+    fun thanksCure() {
+        println("Gracias por curarme")
+    }
+}
+
+interface SayBye {
+    fun sayBye() {
+        println("Bye Bye!!")
+    }
+}
+
+interface SayBye2 {
+    fun sayBye2() {
+        println("Bye Bye!!")
+    }
+}
+
+interface SayBye3 {
+    fun sayBye3() {
+        println("Bye Bye!!")
+    }
 }

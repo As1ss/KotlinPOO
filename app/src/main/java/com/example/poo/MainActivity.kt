@@ -90,6 +90,11 @@ class MainActivity : AppCompatActivity() {
         println("Puntos de vida: ${pokemonAqua.getLife()}")
         pokemonAqua.attack()
 
+        println("OBJETOS TIPO TIERRA-----------------")
+        var pokemonTierra:EarthPokemon= EarthPokemon("Dugtrio",25f)
+        pokemonTierra.depth
+        pokemonTierra.attack()
+        pokemonTierra.sayByeEarthPokemon()
 
         println("OBJETOS TIPO FUEGO-------------------------------")
         var pokemonFire: FirePokemon = FirePokemon("Charmander", 30f)
