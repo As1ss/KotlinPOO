@@ -4,6 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 class MainActivity : AppCompatActivity() {
+    //Objeto anónimo, se declara fuera de las funciones.
+    object fernanda {
+        var apodo: String = "Fer"
+        fun saludo() {
+            println("Hola me llaman $apodo")
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -137,8 +145,39 @@ class MainActivity : AppCompatActivity() {
         println(subClasesTest.presentacion())
         var anidadasTest: SubClasses.Anidada = SubClasses.Anidada()
         println(anidadasTest.presentacion())
-        var internaTest:SubClasses.Interna= SubClasses().Interna()
+        var internaTest: SubClasses.Interna = SubClasses().Interna()
         println(internaTest.presentacion())
+
+        fernanda.saludo()
+        fernanda.apodo = "SuperFer"
+        fernanda.saludo()
+
+        var sol: Star = Star("Sol", 696340f, "Vía Láctea")
+        println(sol)
+        var betelgeuse: Star = Star("Betelgeuse", 617100000f, "Orión", false)
+        println(betelgeuse)
+
+        var hoy: Days = Days.LUNES
+        var semana: Array<Days> = Days.values()
+        for (i in semana) {
+            println(i)
+        }
+        //Muestra el valor de un elemento pasado como String
+        println(Days.valueOf("MIERCOLES"))
+        //Muestra el valor que guarda
+        println(hoy.name)
+        //Muestra la posición de lugar que ocupa
+        println(hoy.ordinal)
+
+        println(hoy.saludo())
+        println(Days.valueOf("JUEVES").saludo())
+
+      for (i in semana){
+          println("Día de la semana: ${i.name}")
+          println("Se trabaja: ${i.laboral}")
+          println("Jornada: ${i.jornada}h")
+      }
+
 
     }
 
